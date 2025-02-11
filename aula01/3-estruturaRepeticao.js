@@ -32,10 +32,14 @@ const educadores = [
 for (let index = 0; index < educadores.length; index++) {
   const educador = educadores[index];
   if (educador.professor === true) {
+    console.log(`está é a idade ${educador.idade} do  ${educador.nome} `)
     console.log(`${educador.nome} é professor!`);
   } else if (educador.tutor === true) {
+    console.log(`está é a idade ${educador.idade} do  ${educador.nome} `)
     console.log(`${educador.nome} é tutor!`);
   } else {
+    console.log("teste educador.nome")
+    console.log(`está é a idade ${educador.idade} do  ${educador.nome} `)
     console.log(`${educador.nome} Não é tutor nem professor!`);
   }
 
