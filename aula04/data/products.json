@@ -1,0 +1,12 @@
+[
+  {
+    "nome": "Café",
+    "preco": "35.00",
+    "categoria": "Item essencial"
+  },
+  {
+    "nome": "Pão",
+    "preco": "10.00",
+    "categoria": "Item de café da manhã"
+  }
+]
