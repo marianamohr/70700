@@ -35,6 +35,40 @@ app.get('/usuario', (req, res) => {
   res.status(200).send({ message: fakeUsers });
 })
 
+// REQ.QUERY FICA ACIMA DO REQ.PARAMS
+// app.get('/usuario/search', (req, res) => {
+//   const { nome } = req.query;
+//   console.log(req);
+
+//   const user = fakeUsers.find((user) => user.nome === nome);
+//   if (!user) {
+//     return res.status(404).json({ message: 'Usuário não encontrado' });
+//   }
+
+//   return res.status(200).json({ message: 'Usuário encontrado', user });
+// });
+
+app.get('/usuario/search', (req, res) => {
+  if (!req.query) {
+    return res.status(400).json({ message: 'Query não informada' });
+  }
+
+  const { query } = req;
+  console.log(req.query);
+
+  if (query.nome) {
+    const user = fakeUsers.find((user) => user.nome === query.nome);
+    return res.status(200).json({ message: 'Usuário encontrado', user });
+  } else if (query.sobrenome) {
+    const user = fakeUsers.find((user) => user.sobrenome === query.sobrenome);
+    return res.status(200).json({ message: 'Usuário encontrado', user });
+  } else if (query.email) {
+    const user = fakeUsers.find((user) => user.email === query.email);
+    return res.status(200).json({ message: 'Usuário encontrado', user });
+  }
+  return res.status(404).json({ message: 'Usuário não encontrado' });
+});
+
 app.get('/usuario/:userId', (req, res) => { // TUDO O QUE VEM NA ROTA É STRING
   console.log(req.params);
 
