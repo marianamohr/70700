@@ -1,9 +1,16 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "firstName": "maria",
     "lastName": "maria",
-    "email": "teste@teste.com",
-    "course": "back"
+    "email": "maria@teste",
+    "course": "backend"
+  },
+  {
+    "id": 2,
+    "firstName": "joao",
+    "lastName": "joao",
+    "email": "joao@teste",
+    "course": "backend"
   }
 ]

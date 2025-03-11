@@ -57,8 +57,9 @@ class ManagerUsers {
     if (!updatedUser.firstName || !updatedUser.lastName || !updatedUser.email || !updatedUser.course) {
       throw new Error('Missing user data');
     }
-
-    users[userIndex] = { id, ...updatedUser };
+    
+    const idNum = +id;
+    users[userIndex] = { id: idNum, ...updatedUser };
     await this.writeFile(users);
     return users[userIndex];
   }
@@ -71,8 +72,10 @@ class ManagerUsers {
       throw new Error('Missing user data');
     }
 
+    const newId = users.length > 0 ? users[users.length - 1].id + 1 : 1;
+
     const newUser = {
-      id: users.length > 0 ? users[users.length - 1].id + 1 : 1, // ID automático
+      id: newId, // Garante que o ID seja numérico
       firstName,
       lastName,
       email,
@@ -104,14 +107,15 @@ class ManagerUsers {
 
   async patchUser(id, updatedFields) {
     const users = await this.readFile();
-    const userIndex = users.findIndex((user) => user.id === id);
+    const userIndex = users.findIndex((user) => user.id === +id);
 
     if (userIndex === -1) {
       throw new Error('User not found');
     }
 
     const existingUser = users[userIndex];
-    const patchedUser = { ...existingUser, ...updatedFields, id };
+    const idNum = +id;
+    const patchedUser = { ...existingUser, ...updatedFields, id:idNum };
 
     users[userIndex] = patchedUser;
     await this.writeFile(users);
