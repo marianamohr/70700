@@ -1,22 +1,22 @@
 const express = require('express');
+const usersController = require('../controllers/users.controller');
 
 const router = express.Router();
 
-let users = [];
+// let users = [];
 
-router.get('/', (req, res) => {
-  return res.status(200).json(users);
-});
+const mid2 = (req, res, next) => {
+  console.log('mid2');
+  next();
+}
 
-router.post('/', (req, res) => {
-  try {
-    const novoUser = req.body;
-    users.push(novoUser);
-    return res.status(201).json(novoUser);
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ erro: 'Erro ao cadastrar usuário' });
-  }
-});
+const mid1 = (req, res, next) => {
+  console.log('mid1');
+  next();
+}
+
+router.get('/', mid2, usersController.getUsers);
+
+router.post('/', mid1, usersController.addUser);
 
 module.exports = router;
