@@ -1,0 +1,23 @@
+<div>
+  <h1>Usuários</h1>
+  <ul>
+    <li>Nome: {{usuario.nome}}</li>
+    <li>Sobrenome: {{usuario.sobrenome}}</li>
+    <li>Idade: {{usuario.idade}}</li>
+    <li>Email: {{usuario.email}}</li>
+    <li>Telefone: {{usuario.telefone}}</li>
+  </ul>
+
+  {{#if isAdmin}}
+    <h2>Produtos</h2>
+    {{#each food}}
+      <ul>
+        <li>Nome: {{name}}</li>
+        <li>Preço: {{price}}</li>
+      </ul>
+    {{/each}}
+  {{else}}
+    <p>Você não tem permissão</p>
+  {{/if}}
+</div>
+<script src="js/index.js"></script>

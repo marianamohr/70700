@@ -1,0 +1,1 @@
+console.log('Estou executando um script a partir de um arquivo externo!');

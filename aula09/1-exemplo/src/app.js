@@ -22,6 +22,17 @@ app.get('/', (req, res) => {
   res.render('index', user);
 });
 
+app.get('/exemplo', (req, res) => {
+  console.log('teste');
+
+  let user = {
+    name: 'João',
+    last_name: 'Rezende'
+  }
+
+  res.render('index1', user);
+});
+
 app.listen(8080, () => {
   console.log('Servidor rodando na porta 8080');
 });
