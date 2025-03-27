@@ -1,0 +1,17 @@
+[
+  {
+    "_id": ObjectId("67e498c8e7b7bb3a6994e214"),
+    "nome": "Alessandra",
+    "email": "alessandra@teste.com",
+    "curso": "Backend",
+    "turma": "70700"
+  },
+  {
+    "_id": ObjectId("67e499cde7b7bb3a6994e215"),
+    "nome": "Alessandra",
+    "email": "alessandra@teste.com",
+    "curso": "Backend",
+    "turma": "70700",
+    "escola": "Coder"
+  }
+]
