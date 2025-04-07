@@ -6,8 +6,6 @@ const createHash = async (password) => {
   };
   
   const isValidatePassword = async (password, user) => {
-    console.log("to no isValidatePassword");
-    console.log(password, user.password);
     const valid = await bcrypt.compare(password, user.password)
     return valid;
   };
