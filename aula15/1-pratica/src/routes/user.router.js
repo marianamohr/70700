@@ -29,7 +29,7 @@ router.put("/:uid", validationUser, async (req, res) => {
   }
 });
 
-app.post("/upload", upload.single("file"), function (req, res) {
+router.post("/upload", upload.single("file"), function (req, res) {
   try {
     const dados = fs.readFileSync(`./${req.file.path}`, "utf8");
     console.log(dados);

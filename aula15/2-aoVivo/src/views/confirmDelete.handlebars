@@ -1,0 +1,44 @@
+<div>
+    <h1>Warning</h1>
+    <h3>Tem certeza que quer deletar o usuario de {{email}}??</h3>
+    <button class="delete-button" data-email="{{email}}">Deletar</button>
+
+</div>
+
+<script>
+
+    const deleteButtons = document.querySelectorAll('.delete-button');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+            const userEmail = button.getAttribute('data-email');
+            await deleteUsuario(userEmail);
+        });
+    });
+
+
+
+  async function deleteUsuario(email) {
+    try {
+      const response = await fetch(`/user/${email}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        console.log(`Usuário com email ${email} deletado com sucesso.`);
+
+        // Redirecionar para a página que exibe o e-mail deletado
+        window.location.href = `/usuario-deletado/${email}`;
+      } else {
+        console.error(`Erro ao excluir usuário. Status: ${response.status}`);
+        // Exibir mensagem de erro ou realizar outra ação apropriada
+      }
+    } catch (error) {
+      console.error('Erro na solicitação de exclusão:', error);
+      // Exibir mensagem de erro ou realizar outra ação apropriada
+    }
+  }
+</script>

@@ -29,4 +29,9 @@ router.get("/edit/:uid", async (req, res) => {
   res.render("edit", { user: user[0] });
 });
 
+router.get("/upload", (req, res) => {
+  console.log("teste");
+  res.render("multer");
+});
+
 module.exports = router;

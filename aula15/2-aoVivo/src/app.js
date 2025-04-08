@@ -3,9 +3,8 @@ const mongoose = require("mongoose");
 const handlebars = require("express-handlebars");
 const path = require("path");
 
-const healthRouter = require("./routes/health.route");
-const viewsRouter = require("./routes/views.route");
-const userRouter = require("./routes/user.route");
+const viewsRouter = require("./routes/views.route")
+const userRouter = require("./routes/user.route")
 
 const pathView = path.join(`${__dirname}/views`);
 
@@ -23,9 +22,9 @@ app.set("views", pathView);
 
 // importacao das rotas
 app.use("/static", express.static(staticPath));
-app.use("/health", healthRouter);
-app.use("/", viewsRouter);
-app.use("/user", userRouter);
+
+app.use("/", viewsRouter)
+app.use("/user", userRouter)
 
 mongoose
   .connect(
