@@ -1,0 +1,76 @@
+<h1>Lista de Usuários</h1>
+
+    <!-- Campo de Busca -->
+    <div>
+      <label for="search">Buscar Usuário:</label>
+      <input type="text" id="search" placeholder="Digite o nome do usuário">
+      <button id="searchButton">Buscar</button>
+    </div>
+
+    <ul>
+      {{#each users}}
+      <div id="list">
+        <li>{{first_name}} {{last_name}} {{email}}</li>
+      </div>
+      {{/each}}
+      <p>Has Next Page: {{result.hasNextPage}}</p>
+    </ul>
+
+    <button id="previous">Previous</button>
+    <button id="next">Next</button>
+
+    <script>
+      const nextButton = document.getElementById('next');
+      const previousButton = document.getElementById('previous');
+      const searchButton = document.getElementById('searchButton');
+      const searchInput = document.getElementById('search');
+
+      // Desabilitar botões de navegação se não houver próxima ou anterior página
+      if (!{{result.hasNextPage}}) {
+        nextButton.disabled = true;
+      }
+
+      if (!{{result.hasPrevPage}}) {
+        previousButton.disabled = true;
+      }
+
+      // Redirecionamento inicial, com controle para evitar loop
+      window.onload = function() {
+        const hasRedirected = sessionStorage.getItem('hasRedirected');
+
+        if (!hasRedirected) {
+          const url = `http://localhost:3000/list/all/1/2`;
+          console.log(url);
+          sessionStorage.setItem('hasRedirected', 'true');
+          window.location.href = url;
+        }
+      };
+
+      // Função para redirecionar para a próxima página
+      nextButton.addEventListener('click', () => {
+        const searchQuery = window.location.pathname.split('/')[2];
+        if ({{result.hasNextPage}}) {
+          const url = `http://localhost:3000/list/${encodeURIComponent(searchQuery)}/{{result.nextPage}}/2`;
+          console.log(url);
+          window.location.href = url;
+        }
+      });
+
+      // Função para redirecionar para a página anterior
+      previousButton.addEventListener('click', () => {
+        const searchQuery = window.location.pathname.split('/')[2];
+        if ({{result.hasPrevPage}}) {
+          const url = `http://localhost:3000/list/${encodeURIComponent(searchQuery)}/{{result.prevPage}}/2`;
+          console.log(url);
+          window.location.href = url;
+        }
+      });
+
+      // Função para buscar usuários
+      searchButton.addEventListener('click', () => {
+        const searchQuery = searchInput.value.trim();
+        if (searchQuery) {
+          window.location.href = `http://localhost:3000/list/${encodeURIComponent(searchQuery)}/1/2`;
+        }
+      });
+    </script>
