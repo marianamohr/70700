@@ -7,6 +7,7 @@ router.post("/login", async (req, res) => {
   const user = req.body;
 
   const userFound = await userService.getUsersByEmail(user);
+  console.log("AAAAAA",userFound)
   if (!userFound) {
     // TODO
     return res.render("loginFail", { email: user.username });
@@ -23,6 +24,7 @@ router.post("/login", async (req, res) => {
       req.session.admin = false;
     }
   }
+  console.log(req.session)
 
   // console.log(req.session, userFound);
   res.render("index", { name: user.username });
