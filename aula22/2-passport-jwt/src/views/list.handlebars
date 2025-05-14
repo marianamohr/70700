@@ -1,0 +1,46 @@
+
+    <a href="/home">Home</a>
+    <a href="/register">Register</a>
+    <a href="/list">User list</a>
+    <a href="/session/logout">LogOut</a>
+
+ <h1>Lista de Usuários</h1>
+     {{#if isAdmin}}
+  <ul>
+    {{#each users}}
+     <div> 
+        <li>{{first_name}} {{last_name}} {{email}}</li>
+         <button class="delete-button" data-email="{{email}}" >Deletar</button>
+         <button class="edit-button" data-email="{{email}}" data-id="{{_id}}">Editar</button>
+       
+     </div>
+    {{/each}}
+  </ul>
+    {{else}}
+     {{#each users}}
+     <div> 
+        <li>{{first_name}} {{last_name}} {{email}}</li>
+       
+     </div>
+    {{/each}}
+   {{/if}}
+
+  <script>
+    console.log('list page');
+ const deleteButtons = document.querySelectorAll('.delete-button');
+ const editButtons = document.querySelectorAll('.edit-button');
+
+  deleteButtons.forEach(button => {
+    button.addEventListener('click', async () => {
+     console.log("funcionei")
+    });
+  });
+
+ editButtons.forEach(button => {
+    button.addEventListener('click', async () => {
+       console.log("funcionei")
+    });
+  });
+
+
+  </script>
