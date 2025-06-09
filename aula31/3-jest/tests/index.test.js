@@ -39,6 +39,6 @@ describe("Função calcularImpostos", () => {
 
     // assert
     expect(resultado.valorImposto).toBe(0);
-    expect(resultado.valorComImposto).toBe.Equal
+    expect(resultado.valorComImposto).toBe(1000);
   });
 });
