@@ -1,6 +1,6 @@
 const express = require("express");
 const userRouter = require("./routers/user");
-const errorHandler = require("./middlewares/error/index");
+const errorHandler = require("./middlewares/error");
 
 const app = express();
 

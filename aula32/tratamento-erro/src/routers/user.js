@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const CustomError = require("../services/errors/CustomError");
+const ErrorBuilder = require("../services/errors/errorBuilder");
 const EErrors = require("../services/errors/enum");
 const generateUserErrorInfo = require("../services/errors/info");
 
@@ -15,13 +16,19 @@ router.get("/:id", (req, res) => {
   console.log("Aqui", Number.isNaN(req.params.id));
 
   if (!Number.isNaN(req.params.id)) {
-    CustomError.createError({
+    /* CustomError.createError({
       name: "Id Not a Number",
       cause: "Id is a string and not a number",
       message: "Erro ao validar se id é um numero inteiro",
       code: 400,
     });
-    CustonError.Name("").Cause().Code().Builder()
+    */
+    ErrorBuilder.Builder()
+      .Name("Id Not a Number")
+      .Message("Connection failed")
+      .Cause("Id is a string and not a number")
+      .Code(400)
+      .Throw();
   }
 
   res.send({ status: "success", payload: users });
