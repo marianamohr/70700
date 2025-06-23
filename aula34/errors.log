@@ -1,0 +1,29 @@
+2024-11-06T23:23:17.668Z [error]: - Tentativa de cadastar novamente um user com o email => mari@gmail.com, email utilizado no user de  id 1
+2024-11-06T23:23:45.822Z [error]: - Tentativa de cadastar novamente um user com o email => mari@gmail.com, email utilizado no user de  id 1
+2024-11-06T23:23:46.107Z [error]: - Tentativa de cadastar novamente um user com o email => mari@gmail.com, email utilizado no user de  id 1
+2024-11-06T23:23:46.327Z [error]: - Tentativa de cadastar novamente um user com o email => mari@gmail.com, email utilizado no user de  id 1
+2024-11-06T23:23:46.489Z [error]: - Tentativa de cadastar novamente um user com o email => mari@gmail.com, email utilizado no user de  id 1
+2024-11-06T23:23:46.645Z [error]: - Tentativa de cadastar novamente um user com o email => mari@gmail.com, email utilizado no user de  id 1
+warn: Aqui {"timestamp":"2025-06-23T23:02:32.854Z"}
+warn: Aqui {"timestamp":"2025-06-23T23:03:08.197Z"}
+warn: Aqui {"timestamp":"2025-06-23T23:03:09.455Z"}
+warn: Aqui {"timestamp":"2025-06-23T23:03:10.805Z"}
+{"level":"warn","message":"Aqui"}
+{"level":"warn","message":"Aqui"}
+{"level":"warn","message":"Aqui"}
+{"level":"warn","message":"Aqui"}
+{"level":"warn","message":"Aqui"}
+{"level":"warn","message":"Aqui"}
+{"level":"warn","message":"Aqui"}
+{"level":"warn","message":"Aqui"}
+{"level":"warn","message":"Aqui"}
+{"level":"warn","message":"GET na / - Mon Jun 23 2025 20:10:01 GMT-0300 (Horário Padrão de Brasília)"}
+{"level":"warn","message":"Aqui"}
+warn: GET na / - Mon Jun 23 2025 20:14:23 GMT-0300 (Horário Padrão de Brasília)
+warn: Aqui
+warn: GET na / - Mon Jun 23 2025 20:14:39 GMT-0300 (Horário Padrão de Brasília)
+warn: Aqui
+warn: GET na / - Mon Jun 23 2025 20:14:58 GMT-0300 (Horário Padrão de Brasília)
+warn: Aqui
+warn: GET na / - Mon Jun 23 2025 20:15:19 GMT-0300 (Horário Padrão de Brasília)
+warn: Aqui
