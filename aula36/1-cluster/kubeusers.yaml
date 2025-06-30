@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubeusers
+spec:
+  selector:
+    app: kubeapp
+  ports:
+    - port: 80
+      targetPort: 3000
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubedeploy
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: kubeapp
+  template:
+    metadata:
+      labels:
+        app: kubeapp
+    spec:
+      containers:
+      - name: kubecontainer
+        image: maricoder/dockeroperations:1.0.0
+        ports:
+        - containerPort: 3000
