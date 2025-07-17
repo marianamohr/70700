@@ -1,0 +1,87 @@
+import mongoose from "mongoose";
+import User from "../src/dao/Users.dao.js";
+import assert from "assert";
+import userModel from "../src/dao/models/User.js";
+
+before(async () => {
+  try {
+    await mongoose.connect(
+      `mongodb+srv://marianamohr:c9zKW4F8Vadmdn5d@cluster0.zm7bida.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+    );
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+  }
+});
+
+after(async () => {
+  await mongoose.disconnect();
+  console.log("Disconnected from MongoDB");
+});
+
+describe("Dao Users", () => {
+  let userDao;
+  before(async () => {
+    userDao = new User();
+  });
+  beforeEach(function () {
+    this.timeout(5000);
+  });
+
+  describe("testing function get", () => {
+    it("Sucesso - dao deve retornar os usuarios em um array", async () => {
+      const resultado = await userDao.get();
+
+      assert.strictEqual(Array.isArray(resultado), true);
+    });
+  });
+  /*
+  describe("testing function  save", () => {
+    it("Sucesso - Deve adicionar um usuario", async () => {
+      // Arrange
+      const user = {
+        first_name: "Mari",
+        email: "johnsoe5@gmail.com",
+        last_name: "Ramos Mohr",
+        password: "sdfsdfsafbdbdagd",
+      };
+
+      // Act
+      const resultado = await userDao.save(user);
+      
+      // Assert
+      assert.ok(resultado._id);
+      assert.equal(resultado.first_name, user.first_name)
+    });
+  });
+ */
+  describe("update", () => {
+    it("update com sucesso", async () => {
+      // Arange
+      const user = {
+        first_name: "Mari",
+        last_name: "Ramos Mohr",
+        email: "xablau3@gmail.com",
+        password: "sdfsdfsafbdbdagd",
+      };
+      const resultado = await userDao.save(user);
+      const newUser = {
+        _id: resultado._id,
+        first_name: "Lucas",
+        last_name: "Prado",
+        email: "lucas@gmail.com",
+        password:
+          "$2b$10$RL3BZd5SOKAY1nHZ3G8x4.HNieau2sDtC1E6hmIrOT4t.bWYWHzm.",
+        role: "user",
+      };
+      console.log(resultado._id,  newUser);
+
+      // act
+      const userUpdated = await userDao.update(resultado._id, newUser);
+      console.log(userUpdated);
+      
+      // assert
+      assert.notEqual(resultado.first_name, userUpdated.first_name);
+    });
+  });
+});

@@ -1,0 +1,113 @@
+paths:
+  /api/users/:
+    get:
+      summary: Get all users
+      tags:
+        - Users 
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '500':
+          description: Internal Server Error
+  /api/users/{uid}:
+    get:
+      summary: Get User by id
+      tags:
+        - Users 
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: User ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Usuario encontrado
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/User'
+        '500':
+          description: Internal Server Error
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update User by id
+      tags:
+        - Users 
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: User ID
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateUser'
+      responses:
+        '200':
+          description: Usuario atualizado
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/User'
+        '500':
+          description: Internal Server Error
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+        first_name:
+          type: string
+          description: First name of the user
+        last_name:
+          type: string
+          description: Last name of the user
+        email:
+          type: string
+          description: Email of the user
+        password:
+          type: string
+          description: Password of the user encrypted
+      example:
+        _id: 5f5b7b3b7f3b7b5f7b3b7f3b
+        first_name: John
+        last_name: Doe
+        email: teste@teste.com
+        password: sdfsdfsafbdbdagd
+    updateUser:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: First name of the user
+        last_name:
+          type: string
+          description: Last name of the user
+        email:
+          type: string
+          description: Email of the user
+        password:
+          type: string
+          description: Password of the user encrypted
+      example:
+        first_name: John
+        last_name: Doe
+        email: 'johnDoe@gmail.com'
+        password: 'sdfsdfsafbdbdagd'
