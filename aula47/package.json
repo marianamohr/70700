@@ -1,0 +1,20 @@
+{
+  "name": "aula47",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start:consumer": "node ./cmd/consumer.js",
+    "start:app": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "ioredis": "^5.4.1",
+    "kafkajs": "^2.2.4",
+    "uuid": "^10.0.0"
+  }
+}
